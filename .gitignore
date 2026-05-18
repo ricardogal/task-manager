@@ -1,0 +1,46 @@
+# Dependencies
+node_modules/
+.pnpm-store/
+
+# Build outputs
+dist/
+build/
+.next/
+.turbo/
+*.tsbuildinfo
+
+# Test outputs
+coverage/
+.nyc_output/
+playwright-report/
+test-results/
+
+# Env
+.env
+.env.local
+.env.*.local
+!.env.example
+
+# Logs
+*.log
+npm-debug.log*
+pnpm-debug.log*
+
+# Editor / OS
+.DS_Store
+.idea/
+.vscode/*
+!.vscode/settings.json
+!.vscode/extensions.json
+*.swp
+
+# Database
+*.db
+*.db-shm
+*.db-wal
+postgres-data/
+
+# Legacy (será removido depois)
+backend_legacy/
+frontend_legacy/
+start_legacy.sh
