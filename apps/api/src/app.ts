@@ -13,6 +13,7 @@ import { authRoutes } from "./modules/auth/auth.routes.js";
 import { usersRoutes } from "./modules/users/users.routes.js";
 import { categoriesRoutes } from "./modules/categories/categories.routes.js";
 import { tasksRoutes } from "./modules/tasks/tasks.routes.js";
+import { commentsRoutes } from "./modules/comments/comments.routes.js";
 
 export async function buildApp(): Promise<FastifyInstance> {
   const app = Fastify({ logger: loggerConfig, disableRequestLogging: false });
@@ -33,6 +34,7 @@ export async function buildApp(): Promise<FastifyInstance> {
   await app.register(usersRoutes, { prefix: "/api/v1" });
   await app.register(categoriesRoutes, { prefix: "/api/v1" });
   await app.register(tasksRoutes, { prefix: "/api/v1/tasks" });
+  await app.register(commentsRoutes, { prefix: "/api/v1" });
 
   return app;
 }
