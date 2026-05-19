@@ -11,6 +11,8 @@ import { registerSwagger } from "./plugins/swagger.js";
 import { healthRoutes } from "./modules/health/health.routes.js";
 import { authRoutes } from "./modules/auth/auth.routes.js";
 import { usersRoutes } from "./modules/users/users.routes.js";
+import { categoriesRoutes } from "./modules/categories/categories.routes.js";
+import { tasksRoutes } from "./modules/tasks/tasks.routes.js";
 
 export async function buildApp(): Promise<FastifyInstance> {
   const app = Fastify({ logger: loggerConfig, disableRequestLogging: false });
@@ -29,6 +31,8 @@ export async function buildApp(): Promise<FastifyInstance> {
   await app.register(healthRoutes);
   await app.register(authRoutes, { prefix: "/api/v1/auth" });
   await app.register(usersRoutes, { prefix: "/api/v1" });
+  await app.register(categoriesRoutes, { prefix: "/api/v1" });
+  await app.register(tasksRoutes, { prefix: "/api/v1/tasks" });
 
   return app;
 }
