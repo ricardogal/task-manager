@@ -44,3 +44,7 @@ postgres-data/
 backend_legacy/
 frontend_legacy/
 start_legacy.sh
+
+# Docker compose local overrides (not portable)
+docker-compose.override.yml
+docker-compose.override.yaml
