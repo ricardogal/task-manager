@@ -9,6 +9,8 @@ import { registerErrorHandler } from "./plugins/error-handler.js";
 import { authPlugin } from "./plugins/auth.js";
 import { registerSwagger } from "./plugins/swagger.js";
 import { healthRoutes } from "./modules/health/health.routes.js";
+import { authRoutes } from "./modules/auth/auth.routes.js";
+import { usersRoutes } from "./modules/users/users.routes.js";
 
 export async function buildApp(): Promise<FastifyInstance> {
   const app = Fastify({ logger: loggerConfig, disableRequestLogging: false });
@@ -25,6 +27,8 @@ export async function buildApp(): Promise<FastifyInstance> {
   registerErrorHandler(app);
 
   await app.register(healthRoutes);
+  await app.register(authRoutes, { prefix: "/api/v1/auth" });
+  await app.register(usersRoutes, { prefix: "/api/v1" });
 
   return app;
 }

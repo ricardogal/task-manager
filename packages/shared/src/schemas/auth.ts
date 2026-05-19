@@ -1,5 +1,5 @@
 import { z } from "zod";
-import { publicUserSchema } from "./user";
+import { publicUserSchema } from "./user.js";
 
 const passwordSchema = z
   .string()

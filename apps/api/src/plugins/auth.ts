@@ -8,13 +8,14 @@ declare module "fastify" {
     userId: string;
   }
   interface FastifyInstance {
-    authenticate: (req: FastifyRequest) => void;
+    authenticate: (req: FastifyRequest) => Promise<void>;
   }
 }
 
 export const authPlugin = fp((app: FastifyInstance) => {
   app.decorateRequest("userId", "");
-  app.decorate("authenticate", (req: FastifyRequest) => {
+  app.decorate("authenticate", async (req: FastifyRequest) => {
+    await Promise.resolve();
     const header = req.headers.authorization;
     if (!header?.startsWith("Bearer ")) {
       throw new UnauthorizedError("Authorization header ausente ou malformado");
